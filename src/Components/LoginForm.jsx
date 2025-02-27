@@ -23,9 +23,9 @@ const LoginForm = () => {
         <input type="email" id="email" name="email" value={formData.email} onChange={changeHandler} placeholder='Enter email address' required/>
       </label>
 
-      <label htmlFor="email">
+      <label htmlFor="password">
         Password:<sup>*</sup>
-        <input type={showPassword ? ("text"): ("password")} id="email" name="email" value={formData.password} onChange={changeHandler} placeholder='Enter Your Email' required/>
+        <input type={showPassword ? "text": "password"} id="password" name="password" value={formData.password} onChange={changeHandler} placeholder='Enter Your Email' required/>
 
         <span onClick={() => setShowPassword((prev) => !prev)}>{showPassword ? (<AiOutlineEyeInvisible />): (<AiOutlineEye />)}</span>
 
