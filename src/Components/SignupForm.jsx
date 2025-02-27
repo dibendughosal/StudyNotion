@@ -1,7 +1,26 @@
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
 
-const SignupForm = () => {
+const SignupForm = ({setIsLoggedIn}) => {
+
+  const navigate = useNavigate();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if(formData.password != formData.confirmPassword ){
+      toast.error('Passwords do not match');
+      return;
+    }
+    if(formData.password.length < 8 ){
+      toast.error('Password should be at least 8 characters long');
+      return;
+    }
+    setIsLoggedIn(true);
+    navigate('/dashboard');
+    toast.success('Account Created');
+    
+  }
  
   const [formData, setFormData] = useState({
     firstname: '',
@@ -23,7 +42,7 @@ const SignupForm = () => {
         <button>Instructor</button>
       </div>
 
-      <form>
+      <form onSubmit={submitHandler}>
 
         <div>
           <label htmlFor="firstname">
@@ -45,7 +64,6 @@ const SignupForm = () => {
           <label htmlFor="password">
             <p>Password: <sup>*</sup></p>
             <input type={ showPassword ? "text" : "password"} id="password" name="password" value={formData.password} placeholder='Enter password' onChange={changeHandler} required />
-
             <span onClick={() => setShowPassword((prev) => !prev)}>{showPassword ? (<AiOutlineEyeInvisible />): (<AiOutlineEye />)}</span>
           </label>
           <label htmlFor="confirmPassword">
@@ -54,7 +72,6 @@ const SignupForm = () => {
             <span onClick={() => setShowPassword((prev) => !prev)}>{showPassword ? (<AiOutlineEyeInvisible />): (<AiOutlineEye />)}</span>
           </label>
         </div>
-
         <button>Create Account</button>
       </form>
     </div>

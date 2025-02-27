@@ -9,16 +9,16 @@ import Dashboard from './pages/Dashboard';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-    <>
+    <div className='w-screen h-screen bg-[#000814] flex flex-col '>
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn}/>} />
+        <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-    </>
+    </div>
   )
 }
 
