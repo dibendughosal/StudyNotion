@@ -30,16 +30,18 @@ const SignupForm = ({setIsLoggedIn}) => {
     confirmPassword: '',
   })
 
+  const [accountType, setAccountType] = useState("student");
+
   const changeHandler = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value })
   }
 
   const [showPassword, setShowPassword] = useState(false)
   return (
-    <div>
-      <div>
-        <button>Student</button>
-        <button>Instructor</button>
+    <div >
+      <div className='flex bg-[#161d29] p-1 gap-x-1 my-6 rounded-full max-w-max'>
+        <button className={`${accountType === "student" ? "bg-[#161d29] text-[#f1f2ff]" : "bg-transparent text-[#f1f2ff]"} py-2 px-5 rounded-full transition-all duration-200`} onClick={() => setAccountType("student") }>Student</button>
+        <button onClick={() => setAccountType("instructor")}>Instructor</button>
       </div>
 
       <form onSubmit={submitHandler}>
