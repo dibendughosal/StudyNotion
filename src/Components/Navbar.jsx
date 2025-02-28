@@ -34,7 +34,7 @@ const Navbar = (props) => {
         }
         {
           !isLoggedIn &&
-          <Link to="/signup"><button className='bg-[#161d29] py-2 px-3 rounded-[8px] border border-[#2c333f] '>Signup</button></Link>
+          <Link to="/signup"><button className='bg-[#161d29] py-2 px-3 rounded-[8px] border border-[#2c333f] '>Sign up</button></Link>
         }
         {
           isLoggedIn && 
