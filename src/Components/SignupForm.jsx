@@ -40,13 +40,13 @@ const SignupForm = ({setIsLoggedIn}) => {
   return (
     <div >
       <div className='flex bg-[#161d29] p-1 gap-x-1 my-6 rounded-full max-w-max'>
-        <button className={`${accountType === "student" ? "bg-[#161d29] text-[#f1f2ff]" : "bg-transparent text-[#f1f2ff]"} py-2 px-5 rounded-full transition-all duration-200`} onClick={() => setAccountType("student") }>Student</button>
-        <button onClick={() => setAccountType("instructor")}>Instructor</button>
+        <button className={`${accountType === "student" ? 'bg-[#000814] text-[#f1f2ff]' : "bg-transparent text-[#f1f2ff]"}  py-2 px-5 rounded-full transition-all duration-200`} onClick={() => setAccountType("student") }>Student</button>
+        <button className={`${accountType === "instructor" ? "bg-[#000814] text-[#f1f2ff]" : "bg-transparent text-[#f1f2ff]"}  py-2 px-5 rounded-full transition-all duration-200`} onClick={() => setAccountType("instructor") } onClick={() => setAccountType("instructor")}>Instructor</button>
       </div>
 
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className='w-full flex flex-col gap-y-4'>
 
-        <div className='w-full flex gap-x-4'>
+        <div className='w-full flex gap-x-4 font-medium'>
           <label htmlFor="firstname" className='w-full'>
             <p className='text-[0.875rem] text-[#f1f2ff] mb-1 leading-[1.375rem]'>First Name: <sup className='text-[#ef476f]'>*</sup></p>
             <input type="text" id="firstname" name="firstname" value={formData.firstname} placeholder='Enter First Name' onChange={changeHandler} className='rounded-[0.5rem] text-[#f1f2ff] w-full bg-[#161d29] p-3 shadow-[rgba(255,255,255,0.18)_0px_-1px_0px]' required />
@@ -57,12 +57,12 @@ const SignupForm = ({setIsLoggedIn}) => {
           </label>
         </div>
 
-        <label htmlFor="email">
+        <label htmlFor="email" className='w-full font-medium'>
             <p className='text-[0.875rem] text-[#f1f2ff] mb-1 leading-[1.375rem]'>Email address: <sup className='text-[#ef476f]'>*</sup></p>
             <input type="email" id="email" name="email" value={formData.email} placeholder='Enter email address' onChange={changeHandler} className='rounded-[0.5rem] text-[#f1f2ff] w-full bg-[#161d29] p-3 shadow-[rgba(255,255,255,0.18)_0px_-1px_0px]' required />
         </label>
 
-        <div className='flex w-full gap-x-4'>
+        <div className='flex w-full gap-x-4 font-medium'>
           <label htmlFor="password" className='w-full relative'>
             <p className='text-[0.875rem] text-[#f1f2ff] mb-1 leading-[1.375rem]'>Password: <sup className='text-[#ef476f]'>*</sup></p>
             <input type={ showPassword ? "text" : "password"} id="password" name="password" value={formData.password} placeholder='Enter password' onChange={changeHandler} className='rounded-[0.5rem] text-[#f1f2ff] w-full bg-[#161d29] p-3 shadow-[rgba(255,255,255,0.18)_0px_-1px_0px]' required />
