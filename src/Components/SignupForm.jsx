@@ -36,12 +36,13 @@ const SignupForm = ({setIsLoggedIn}) => {
     setFormData({...formData, [e.target.name]: e.target.value })
   }
 
-  const [showPassword, setShowPassword] = useState(false)
+  let [showPasswordOne, setShowPasswordOne] = useState(false)
+  let [showPasswordTwo, setShowPasswordTwo] = useState(false)
   return (
     <div >
       <div className='flex bg-[#161d29] p-1 gap-x-1 my-6 rounded-full max-w-max'>
         <button className={`${accountType === "student" ? 'bg-[#000814] text-[#f1f2ff]' : "bg-transparent text-[#f1f2ff]"}  py-2 px-5 rounded-full transition-all duration-200`} onClick={() => setAccountType("student") }>Student</button>
-        <button className={`${accountType === "instructor" ? "bg-[#000814] text-[#f1f2ff]" : "bg-transparent text-[#f1f2ff]"}  py-2 px-5 rounded-full transition-all duration-200`} onClick={() => setAccountType("instructor") } onClick={() => setAccountType("instructor")}>Instructor</button>
+        <button className={`${accountType === "instructor" ? "bg-[#000814] text-[#f1f2ff]" : "bg-transparent text-[#f1f2ff]"}  py-2 px-5 rounded-full transition-all duration-200`} onClick={() => setAccountType("instructor") }>Instructor</button>
       </div>
 
       <form onSubmit={submitHandler} className='w-full flex flex-col gap-y-4'>
@@ -65,13 +66,13 @@ const SignupForm = ({setIsLoggedIn}) => {
         <div className='flex w-full gap-x-4 font-medium'>
           <label htmlFor="password" className='w-full relative'>
             <p className='text-[0.875rem] text-[#f1f2ff] mb-1 leading-[1.375rem]'>Password: <sup className='text-[#ef476f]'>*</sup></p>
-            <input type={ showPassword ? "text" : "password"} id="password" name="password" value={formData.password} placeholder='Enter password' onChange={changeHandler} className='rounded-[0.5rem] text-[#f1f2ff] w-full bg-[#161d29] p-3 shadow-[rgba(255,255,255,0.18)_0px_-1px_0px]' required />
-            <span className='absolute right-3 top-[38px]' onClick={() => setShowPassword((prev) => !prev)}>{showPassword ? (<AiOutlineEyeInvisible fontSize={24} fill='#AFB2bf'/>) : (<AiOutlineEye fontSize={24} fill='#AFB2bf'/>)}</span>
+            <input type={ showPasswordOne ? "text" : "password"} id="password" name="password" value={formData.password} placeholder='Enter password' onChange={changeHandler} className='rounded-[0.5rem] text-[#f1f2ff] w-full bg-[#161d29] p-3 shadow-[rgba(255,255,255,0.18)_0px_-1px_0px]' required />
+            <span className='absolute right-3 top-[38px]' onClick={() => setShowPasswordOne((prev) => !prev)}>{showPasswordOne ? (<AiOutlineEyeInvisible fontSize={24} fill='#AFB2bf'/>) : (<AiOutlineEye fontSize={24} fill='#AFB2bf'/>)}</span>
           </label>
           <label htmlFor="confirmPassword" className='w-full relative'>
             <p className='text-[0.875rem] text-[#f1f2ff] mb-1 leading-[1.375rem]'>Confirm Password: <sup className='text-[#ef476f]'>*</sup></p>
-            <input type="password" id="confirmPassword" name="confirmPassword" value={formData.confirmPassword} placeholder='Confirm password' className='rounded-[0.5rem] text-[#f1f2ff] w-full bg-[#161d29] p-3 shadow-[rgba(255,255,255,0.18)_0px_-1px_0px]' onChange={changeHandler} required />
-            <span className='absolute right-3 top-[38px] text-[#f1f2ff] cursor-pointer' onClick={() => setShowPassword((prev) => !prev)}>{showPassword ? (<AiOutlineEyeInvisible fontSize={24} fill='#AFB2bf'/>): (<AiOutlineEye fontSize={24} fill='#AFB2bf'/>)}</span>
+            <input type={ showPasswordTwo ? "text" : "password"} id="confirmPassword" name="confirmPassword" value={formData.confirmPassword} placeholder='Confirm password' className='rounded-[0.5rem] text-[#f1f2ff] w-full bg-[#161d29] p-3 shadow-[rgba(255,255,255,0.18)_0px_-1px_0px]' onChange={changeHandler} required />
+            <span className='absolute right-3 top-[38px] text-[#f1f2ff] cursor-pointer' onClick={() => setShowPasswordTwo((prev) => !prev)}>{showPasswordTwo ? (<AiOutlineEyeInvisible fontSize={24} fill='#AFB2bf'/>) : (<AiOutlineEye fontSize={24} fill='#AFB2bf'/>)}</span>
           </label>
         </div>
         <button className='bg-[#ffd60a] rounded-[8px] font-medium text-[#000814
